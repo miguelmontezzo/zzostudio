@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import {
     ArrowRight,
     Check,
@@ -21,13 +20,13 @@ const IAServicePage = () => {
             {/* HEADER / NAV */}
             <nav className="fixed top-0 left-0 w-full z-50 px-6 py-4 bg-black border-b border-white/10">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
-                    <Link to="/">
+                    <a href="#">
                         <img
                             src="https://i.ibb.co/G4v1kTLz/logobrancazzostudio-2x.png"
                             alt="ZZO Studio"
                             className="h-8 w-auto"
                         />
-                    </Link>
+                    </a>
 
                     <div className="hidden md:flex gap-8 text-sm font-medium text-white/70">
                         <a href="#problema" className="hover:text-[#f0b05d] transition-colors">O Problema</a>
@@ -63,16 +62,15 @@ const IAServicePage = () => {
                                         left: '50%',
                                         width: '100%',
                                         height: '100%',
-                                        minWidth: '177.78vh',
-                                        minHeight: '56.25vw',
-                                        transform: 'translate(-50%, -50%)',
+                                        transform: 'translate(-50%, -50%) scale(3.16)',
+                                        transformOrigin: 'center center',
                                         border: 'none',
                                         pointerEvents: 'none',
-                                        opacity: 0.5,
+                                        opacity: 0.1,
                                     }}
                                     title="ZZO Studio background"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                             </div>
 
                             <div className="relative z-10 max-w-3xl mt-auto">
