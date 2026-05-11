@@ -52,12 +52,25 @@ const IAServicePage = () => {
                     {/* Main Hero Image/Card */}
                     <FadeIn>
                         <div className="relative w-full rounded-[2rem] overflow-hidden bg-black min-h-[70vh] flex flex-col justify-between p-10 md:p-16">
-                            {/* Video background */}
-                            <div className="absolute inset-0 z-0">
-                                <video
-                                    src="https://nthfbwootpzgpsjnerdw.supabase.co/storage/v1/object/sign/digital/bf9d9e4c-6774-413f-84f0-903aeab48993_hd.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iMDM3Y2M3My1iMWUxLTQwYmQtODVjNS1lNjk1ZGM3ZmU1YzUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkaWdpdGFsL2JmOWQ5ZTRjLTY3NzQtNDEzZi04NGYwLTkwM2FlYWI0ODk5M19oZC5tcDQiLCJpYXQiOjE3NzE5NzM0ODQsImV4cCI6MTgwMzUwOTQ4NH0.T6xwP4oB1dxDnf9LyvJMwe8mnrpM_GG1_je6HeGJwtA"
-                                    className="w-full h-full object-cover opacity-50 mix-blend-overlay"
-                                    autoPlay loop muted playsInline
+                            {/* Video background YouTube */}
+                            <div className="absolute inset-0 z-0 overflow-hidden">
+                                <iframe
+                                    src="https://www.youtube.com/embed/gUONP_btbCc?autoplay=1&mute=1&controls=0&loop=1&playlist=gUONP_btbCc&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3"
+                                    allow="autoplay; encrypted-media"
+                                    style={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: '50%',
+                                        width: '100%',
+                                        height: '100%',
+                                        minWidth: '177.78vh',
+                                        minHeight: '56.25vw',
+                                        transform: 'translate(-50%, -50%)',
+                                        border: 'none',
+                                        pointerEvents: 'none',
+                                        opacity: 0.5,
+                                    }}
+                                    title="ZZO Studio background"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                             </div>
