@@ -313,48 +313,28 @@ const IAServicePage = () => {
                                 </div>
                             </div>
 
-                            {/* Bloco 5: YouTube Short 9:16 centralizado */}
-                            <div className="col-span-2 row-span-2 relative rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer bg-black border border-white/10">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div style={{ height: '100%', aspectRatio: '9/16', position: 'relative', flexShrink: 0 }}>
-                                        <iframe
-                                            src="https://www.youtube.com/embed/hjq27U-Aad8?autoplay=1&mute=1&controls=0&loop=1&playlist=hjq27U-Aad8&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
-                                            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
-                                            allow="autoplay; encrypted-media"
-                                            title="ZZO Studio"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
 
-                            {/* Bloco 6: YouTube Short 9:16 centralizado */}
-                            <div className="row-span-2 relative rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer bg-black border border-white/10">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div style={{ height: '100%', aspectRatio: '9/16', position: 'relative', flexShrink: 0 }}>
-                                        <iframe
-                                            src="https://www.youtube.com/embed/fWaMJvcKTuI?autoplay=1&mute=1&controls=0&loop=1&playlist=fWaMJvcKTuI&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
-                                            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
-                                            allow="autoplay; encrypted-media"
-                                            title="ZZO Studio"
-                                        />
-                                    </div>
+                        {/* YouTube Shorts — 3 vídeos 9:16 centralizados */}
+                        <div className="flex justify-center gap-4 mt-4">
+                            {[
+                                "hjq27U-Aad8",
+                                "fWaMJvcKTuI",
+                                "gUONP_btbCc",
+                            ].map((id) => (
+                                <div
+                                    key={id}
+                                    className="rounded-xl md:rounded-2xl overflow-hidden bg-black border border-white/10 flex-shrink-0"
+                                    style={{ height: '480px', aspectRatio: '9/16' }}
+                                >
+                                    <iframe
+                                        src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${id}&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`}
+                                        style={{ width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
+                                        allow="autoplay; encrypted-media"
+                                        title="ZZO Studio"
+                                    />
                                 </div>
-                            </div>
-
-                            {/* Bloco 7: YouTube Short 9:16 centralizado */}
-                            <div className="row-span-2 relative rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer bg-black border border-white/10">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div style={{ height: '100%', aspectRatio: '9/16', position: 'relative', flexShrink: 0 }}>
-                                        <iframe
-                                            src="https://www.youtube.com/embed/gUONP_btbCc?autoplay=1&mute=1&controls=0&loop=1&playlist=gUONP_btbCc&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
-                                            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
-                                            allow="autoplay; encrypted-media"
-                                            title="ZZO Studio"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
+                            ))}
                         </div>
                     </FadeIn>
                 </div>
