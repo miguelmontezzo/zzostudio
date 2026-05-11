@@ -256,76 +256,39 @@ const IAServicePage = () => {
                     </FadeIn>
 
                     <FadeIn delay={0.2}>
-                        {/* Bento Grid - Estilo Instgram Explore */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 auto-rows-[150px] md:auto-rows-[250px]">
 
-                            {/* Bloco 1: Vídeo maior (Destaque) */}
-                            <div className="col-span-2 row-span-2 relative rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer bg-[#0a0a0a] border border-white/10">
-                                <video
-                                    src="https://antiplanos.com.br/backend/uploads/1771626122_1771557580_9.mp4"
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-                                    autoPlay loop muted playsInline preload="auto"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
-                                <div className="absolute top-4 right-4 bg-white/20 backdrop-blur p-2 rounded-full z-10">
-                                    <Play className="w-5 h-5 text-white" />
-                                </div>
-                                <div className="absolute bottom-6 left-6 z-10 translate-y-2 group-hover:translate-y-0 transition-transform">
-                                    <p className="text-white font-bold md:text-2xl">Clone Estratégico</p>
-                                    <p className="text-[#f0b05d] font-medium text-sm">Produção Automatizada</p>
-                                </div>
-                            </div>
-
-                            {/* Bloco 2: Vídeo Estendido (Vertical) */}
-                            <div className="row-span-2 relative rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer bg-[#0a0a0a] border border-white/10">
-                                <video
-                                    src="https://antiplanos.com.br/backend/uploads/1771626173_1771557430_10.mp4"
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                                    autoPlay loop muted playsInline preload="auto"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
-                                <div className="absolute bottom-6 left-6 z-10">
-                                    <p className="text-white font-bold text-lg">Direção Visual</p>
-                                </div>
-                            </div>
-
-                            {/* Bloco 3: Vídeo Padrão Menor */}
-                            <div className="relative rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer bg-[#0a0a0a] border border-white/10">
-                                <video
-                                    src="https://antiplano.com.br/uploads/media_699751cc03513.mp4"
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                                    autoPlay loop muted playsInline preload="auto"
-                                />
-                                <div className="absolute top-3 right-3 bg-black/40 backdrop-blur p-1.5 rounded-full z-10">
-                                    <Play className="w-3 h-3 text-white" />
-                                </div>
-                            </div>
-
-                            {/* Bloco 4: Vídeo Padrão Menor */}
-                            <div className="relative rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer bg-[#0a0a0a] border border-white/10">
-                                <video
-                                    src="https://antiplano.com.br/uploads/media_6997511ba1d6f.mp4"
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                                    autoPlay loop muted playsInline preload="auto"
-                                />
-                                <div className="absolute top-3 right-3 bg-black/40 backdrop-blur p-1.5 rounded-full z-10">
-                                    <Play className="w-3 h-3 text-white" />
-                                </div>
-                            </div>
-
-                        </div>
-
-                        {/* YouTube Shorts — 3 vídeos 9:16 centralizados */}
-                        <div className="flex justify-center gap-4 mt-4">
+                        {/* MOBILE: Carrossel horizontal 9:16 */}
+                        <div
+                            className="md:hidden flex gap-4 overflow-x-auto pb-4 -mx-6 px-6"
+                            style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
+                        >
+                            {/* Vídeos nativos */}
                             {[
-                                "hjq27U-Aad8",
-                                "fWaMJvcKTuI",
-                                "gUONP_btbCc",
-                            ].map((id) => (
+                                { src: "https://antiplanos.com.br/backend/uploads/1771626122_1771557580_9.mp4", label: "Clone Estratégico" },
+                                { src: "https://antiplanos.com.br/backend/uploads/1771626173_1771557430_10.mp4", label: "Direção Visual" },
+                                { src: "https://antiplano.com.br/uploads/media_699751cc03513.mp4", label: null },
+                                { src: "https://antiplano.com.br/uploads/media_6997511ba1d6f.mp4", label: null },
+                            ].map(({ src, label }, i) => (
+                                <div
+                                    key={i}
+                                    className="relative flex-shrink-0 rounded-2xl overflow-hidden bg-[#0a0a0a] border border-white/10"
+                                    style={{ scrollSnapAlign: 'center', height: '420px', aspectRatio: '9/16' }}
+                                >
+                                    <video src={src} className="w-full h-full object-cover" autoPlay loop muted playsInline preload="auto" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                                    {label && (
+                                        <div className="absolute bottom-5 left-5 z-10">
+                                            <p className="text-white font-bold text-base">{label}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                            {/* YouTube Shorts */}
+                            {["hjq27U-Aad8", "fWaMJvcKTuI", "gUONP_btbCc"].map((id) => (
                                 <div
                                     key={id}
-                                    className="rounded-xl md:rounded-2xl overflow-hidden bg-black border border-white/10 flex-shrink-0"
-                                    style={{ height: '480px', aspectRatio: '9/16' }}
+                                    className="relative flex-shrink-0 rounded-2xl overflow-hidden bg-black border border-white/10"
+                                    style={{ scrollSnapAlign: 'center', height: '420px', aspectRatio: '9/16' }}
                                 >
                                     <iframe
                                         src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${id}&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`}
@@ -336,6 +299,53 @@ const IAServicePage = () => {
                                 </div>
                             ))}
                         </div>
+
+                        {/* DESKTOP: Bento Grid + Shorts */}
+                        <div className="hidden md:block">
+                            <div className="grid grid-cols-4 gap-4 auto-rows-[250px]">
+                                <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden group cursor-pointer bg-[#0a0a0a] border border-white/10">
+                                    <video src="https://antiplanos.com.br/backend/uploads/1771626122_1771557580_9.mp4" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" autoPlay loop muted playsInline preload="auto" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
+                                    <div className="absolute top-4 right-4 bg-white/20 backdrop-blur p-2 rounded-full z-10"><Play className="w-5 h-5 text-white" /></div>
+                                    <div className="absolute bottom-6 left-6 z-10 translate-y-2 group-hover:translate-y-0 transition-transform">
+                                        <p className="text-white font-bold text-2xl">Clone Estratégico</p>
+                                        <p className="text-[#f0b05d] font-medium text-sm">Produção Automatizada</p>
+                                    </div>
+                                </div>
+                                <div className="row-span-2 relative rounded-2xl overflow-hidden group cursor-pointer bg-[#0a0a0a] border border-white/10">
+                                    <video src="https://antiplanos.com.br/backend/uploads/1771626173_1771557430_10.mp4" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" autoPlay loop muted playsInline preload="auto" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
+                                    <div className="absolute bottom-6 left-6 z-10"><p className="text-white font-bold text-lg">Direção Visual</p></div>
+                                </div>
+                                <div className="relative rounded-2xl overflow-hidden group cursor-pointer bg-[#0a0a0a] border border-white/10">
+                                    <video src="https://antiplano.com.br/uploads/media_699751cc03513.mp4" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100" autoPlay loop muted playsInline preload="auto" />
+                                    <div className="absolute top-3 right-3 bg-black/40 backdrop-blur p-1.5 rounded-full z-10"><Play className="w-3 h-3 text-white" /></div>
+                                </div>
+                                <div className="relative rounded-2xl overflow-hidden group cursor-pointer bg-[#0a0a0a] border border-white/10">
+                                    <video src="https://antiplano.com.br/uploads/media_6997511ba1d6f.mp4" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100" autoPlay loop muted playsInline preload="auto" />
+                                    <div className="absolute top-3 right-3 bg-black/40 backdrop-blur p-1.5 rounded-full z-10"><Play className="w-3 h-3 text-white" /></div>
+                                </div>
+                            </div>
+
+                            {/* YouTube Shorts — 3 vídeos 9:16 centralizados */}
+                            <div className="flex justify-center gap-4 mt-4">
+                                {["hjq27U-Aad8", "fWaMJvcKTuI", "gUONP_btbCc"].map((id) => (
+                                    <div
+                                        key={id}
+                                        className="rounded-2xl overflow-hidden bg-black border border-white/10 flex-shrink-0"
+                                        style={{ height: '480px', aspectRatio: '9/16' }}
+                                    >
+                                        <iframe
+                                            src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${id}&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`}
+                                            style={{ width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
+                                            allow="autoplay; encrypted-media"
+                                            title="ZZO Studio"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
                     </FadeIn>
                 </div>
             </section>
