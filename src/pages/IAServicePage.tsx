@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
     ArrowRight,
     Check,
@@ -12,8 +12,62 @@ import {
 } from "lucide-react";
 import { FadeIn } from "../components/Shared";
 
+const MobileShortCard: React.FC<{ id: string }> = ({ id }) => {
+    const [active, setActive] = useState(false);
+    const thumb = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+    return (
+        <div
+            className="relative flex-shrink-0 rounded-2xl overflow-hidden bg-black border border-white/10 cursor-pointer"
+            style={{ scrollSnapAlign: 'center', height: '420px', aspectRatio: '9/16' }}
+            onClick={() => setActive(true)}
+        >
+            {active ? (
+                <iframe
+                    src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=1&loop=1&playlist=${id}&modestbranding=1&rel=0&playsinline=1`}
+                    style={{ width: '100%', height: '100%', border: 'none' }}
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    title="ZZO Studio"
+                />
+            ) : (
+                <>
+                    <img src={thumb} alt="" className="w-full h-full object-cover opacity-80" />
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                        <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur flex items-center justify-center border border-white/40">
+                            <Play className="w-6 h-6 text-white ml-1" />
+                        </div>
+                    </div>
+                </>
+            )}
+        </div>
+    );
+};
+
 const IAServicePage = () => {
     const [investimento, setInvestimento] = useState(1000);
+    const carouselRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const container = carouselRef.current;
+        if (!container) return;
+        const videos = Array.from(container.querySelectorAll('video'));
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const v = entry.target as HTMLVideoElement;
+                    if (entry.isIntersecting) {
+                        v.play().catch(() => {});
+                    } else {
+                        v.pause();
+                    }
+                });
+            },
+            { threshold: 0.4 }
+        );
+        videos.forEach((v) => observer.observe(v as Element));
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#fef0d6] selection:text-black">
 
@@ -259,6 +313,7 @@ const IAServicePage = () => {
 
                         {/* MOBILE: Carrossel horizontal 9:16 */}
                         <div
+                            ref={carouselRef}
                             className="md:hidden flex gap-4 overflow-x-auto pb-4 -mx-6 px-6"
                             style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
                         >
@@ -274,7 +329,12 @@ const IAServicePage = () => {
                                     className="relative flex-shrink-0 rounded-2xl overflow-hidden bg-[#0a0a0a] border border-white/10"
                                     style={{ scrollSnapAlign: 'center', height: '420px', aspectRatio: '9/16' }}
                                 >
-                                    <video src={src} className="w-full h-full object-cover" autoPlay loop muted playsInline preload="auto" />
+                                    <video
+                                        src={src}
+                                        className="w-full h-full object-cover"
+                                        autoPlay loop muted playsInline preload="auto"
+                                        onLoadedMetadata={(e) => (e.currentTarget as HTMLVideoElement).play().catch(() => {})}
+                                    />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                                     {label && (
                                         <div className="absolute bottom-5 left-5 z-10">
@@ -283,20 +343,9 @@ const IAServicePage = () => {
                                     )}
                                 </div>
                             ))}
-                            {/* YouTube Shorts */}
+                            {/* YouTube Shorts — tap to play no mobile (iOS não permite autoplay em iframes) */}
                             {["hjq27U-Aad8", "fWaMJvcKTuI", "gUONP_btbCc"].map((id) => (
-                                <div
-                                    key={id}
-                                    className="relative flex-shrink-0 rounded-2xl overflow-hidden bg-black border border-white/10"
-                                    style={{ scrollSnapAlign: 'center', height: '420px', aspectRatio: '9/16' }}
-                                >
-                                    <iframe
-                                        src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${id}&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`}
-                                        style={{ width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
-                                        allow="autoplay; encrypted-media"
-                                        title="ZZO Studio"
-                                    />
-                                </div>
+                                <MobileShortCard key={id} id={id} />
                             ))}
                         </div>
 
