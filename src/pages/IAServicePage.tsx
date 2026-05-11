@@ -264,7 +264,7 @@ const IAServicePage = () => {
                                 <video
                                     src="https://antiplanos.com.br/backend/uploads/1771626122_1771557580_9.mp4"
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-                                    autoPlay loop muted playsInline
+                                    autoPlay loop muted playsInline preload="auto"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
                                 <div className="absolute top-4 right-4 bg-white/20 backdrop-blur p-2 rounded-full z-10">
@@ -281,7 +281,7 @@ const IAServicePage = () => {
                                 <video
                                     src="https://antiplanos.com.br/backend/uploads/1771626173_1771557430_10.mp4"
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                                    autoPlay loop muted playsInline
+                                    autoPlay loop muted playsInline preload="auto"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
                                 <div className="absolute bottom-6 left-6 z-10">
@@ -294,7 +294,7 @@ const IAServicePage = () => {
                                 <video
                                     src="https://antiplano.com.br/uploads/media_699751cc03513.mp4"
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                                    autoPlay loop muted playsInline
+                                    autoPlay loop muted playsInline preload="auto"
                                 />
                                 <div className="absolute top-3 right-3 bg-black/40 backdrop-blur p-1.5 rounded-full z-10">
                                     <Play className="w-3 h-3 text-white" />
@@ -306,7 +306,7 @@ const IAServicePage = () => {
                                 <video
                                     src="https://antiplano.com.br/uploads/media_6997511ba1d6f.mp4"
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                                    autoPlay loop muted playsInline
+                                    autoPlay loop muted playsInline preload="auto"
                                 />
                                 <div className="absolute top-3 right-3 bg-black/40 backdrop-blur p-1.5 rounded-full z-10">
                                     <Play className="w-3 h-3 text-white" />
@@ -318,7 +318,7 @@ const IAServicePage = () => {
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <div style={{ height: '100%', aspectRatio: '9/16', position: 'relative', flexShrink: 0 }}>
                                         <iframe
-                                            src="https://www.youtube.com/embed/hjq27U-Aad8?autoplay=1&mute=1&controls=0&loop=1&playlist=hjq27U-Aad8&modestbranding=1&rel=0"
+                                            src="https://www.youtube.com/embed/hjq27U-Aad8?autoplay=1&mute=1&controls=0&loop=1&playlist=hjq27U-Aad8&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
                                             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
                                             allow="autoplay; encrypted-media"
                                             title="ZZO Studio"
@@ -332,7 +332,7 @@ const IAServicePage = () => {
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <div style={{ height: '100%', aspectRatio: '9/16', position: 'relative', flexShrink: 0 }}>
                                         <iframe
-                                            src="https://www.youtube.com/embed/fWaMJvcKTuI?autoplay=1&mute=1&controls=0&loop=1&playlist=fWaMJvcKTuI&modestbranding=1&rel=0"
+                                            src="https://www.youtube.com/embed/fWaMJvcKTuI?autoplay=1&mute=1&controls=0&loop=1&playlist=fWaMJvcKTuI&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
                                             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
                                             allow="autoplay; encrypted-media"
                                             title="ZZO Studio"
@@ -346,7 +346,7 @@ const IAServicePage = () => {
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <div style={{ height: '100%', aspectRatio: '9/16', position: 'relative', flexShrink: 0 }}>
                                         <iframe
-                                            src="https://www.youtube.com/embed/gUONP_btbCc?autoplay=1&mute=1&controls=0&loop=1&playlist=gUONP_btbCc&modestbranding=1&rel=0"
+                                            src="https://www.youtube.com/embed/gUONP_btbCc?autoplay=1&mute=1&controls=0&loop=1&playlist=gUONP_btbCc&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
                                             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
                                             allow="autoplay; encrypted-media"
                                             title="ZZO Studio"
